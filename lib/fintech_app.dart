@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FintechApp extends StatelessWidget {
-  const FintechApp({ super.key,
-    required this.appRoutes,
-  });
+  const FintechApp({super.key, required this.appRoutes});
   final AppRoutes appRoutes;
 
   @override
