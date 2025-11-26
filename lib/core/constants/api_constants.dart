@@ -1,4 +1,3 @@
-
 import 'package:fintech_app/core/constants/env.dart';
 
 class ApiConstants {
@@ -7,7 +6,6 @@ class ApiConstants {
   static const int connectionTimeout = 10000;
   static const int receiveTimeout = 10000;
   static const int sendTimeout = 10000;
+}
 
-}
-class ApiEndpoints {
-}
+class ApiEndpoints {}

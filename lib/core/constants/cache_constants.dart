@@ -1,2 +1,1 @@
-class CacheConstants {
-}
+class CacheConstants {}
