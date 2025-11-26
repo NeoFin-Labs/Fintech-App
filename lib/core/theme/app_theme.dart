@@ -1,35 +1,31 @@
+import 'package:fintech_app/core/utils/app_colors_light.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: AppColorsLight.primary,
+    colorSchemeSeed: AppColorsLight.primary,
+    scaffoldBackgroundColor: AppColorsLight.background,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
+      foregroundColor: AppColorsLight.primary,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        color: Colors.black,
-      ),
-    ),
+    textTheme: GoogleFonts.latoTextTheme(),
   );
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black,
+    primaryColor: AppColorsDark.primary,
+    colorSchemeSeed: AppColorsDark.primary,
+    scaffoldBackgroundColor: AppColorsDark.background,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.black,
-      foregroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
+      foregroundColor: AppColorsDark.primaryText,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        color: Colors.white,
-      ),
-    ),
+    textTheme: GoogleFonts.latoTextTheme(),
   );
 }
