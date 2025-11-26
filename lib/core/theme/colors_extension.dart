@@ -131,3 +131,4 @@ extension ColorExtension on ThemeData {
     return AppColors._light();
   }
 }
+
