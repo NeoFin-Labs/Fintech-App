@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fintech_app/core/utils/app_colors_light.dart';
+import 'package:fintech_app/core/utils/app_colors.dart';
 
 class AppColors {
   const AppColors._({
