@@ -10,6 +10,7 @@ class AppColors {
     required this.background,
     required this.primaryText,
     required this.secondaryText,
+    required this.subTitleText,
     required this.textBlack,
     required this.textGray,
     required this.iconPrimary,
@@ -40,6 +41,7 @@ class AppColors {
   // Text Colors
   final Color primaryText;
   final Color secondaryText;
+  final Color subTitleText;
   final Color textBlack;
   final Color textGray;
 
@@ -76,6 +78,7 @@ class AppColors {
       background: AppColorsLight.background,
       primaryText: AppColorsLight.primaryText,
       secondaryText: AppColorsLight.secondaryText,
+      subTitleText: AppColorsLight.subTitleText,
       textBlack: AppColorsLight.textBlack,
       textGray: AppColorsLight.textGray,
       iconPrimary: AppColorsLight.iconPrimary,
@@ -104,6 +107,7 @@ class AppColors {
       background: AppColorsDark.background,
       primaryText: AppColorsDark.primaryText,
       secondaryText: AppColorsDark.secondaryText,
+      subTitleText: AppColorsDark.subTitleText,
       textBlack: AppColorsDark.textBlack,
       textGray: AppColorsDark.textGray,
       iconPrimary: AppColorsDark.iconPrimary,
