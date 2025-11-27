@@ -14,6 +14,7 @@ class AppColorsLight {
   // Text Colors
   static const Color primaryText = Color(0xFF1E1F4B);
   static const Color secondaryText = Color(0xFF787A8D);
+  static const Color subTitleText = Color(0xFF18191F);
   static const Color textBlack = Color(0xFF152C07);
   static const Color textGray = Color(0xFF949494);
 
@@ -57,6 +58,7 @@ class AppColorsDark {
   // Text Colors
   static const Color primaryText = white;
   static const Color secondaryText = Color(0xFFA1A1A1);
+  static const Color subTitleText = Color(0xFFE0E1E7);
   static const Color textBlack = Color(0xFF152C07);
   static const Color textGray = Color(0xFF949494);
 
