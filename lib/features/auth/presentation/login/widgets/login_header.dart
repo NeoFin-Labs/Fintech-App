@@ -19,7 +19,7 @@ class LoginHeader extends StatelessWidget {
           style: AppTextStyle.font26Bold.copyWith(color: colors.primaryText),
           textAlign: TextAlign.center,
         ),
-        VerticalSpace(16),
+        VerticalSpace(15),
         Text(
           'Welcome back you\'ve\nbeen missed!',
           style: AppTextStyle.font18SemiBold.copyWith(

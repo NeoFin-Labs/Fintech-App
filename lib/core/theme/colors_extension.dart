@@ -13,8 +13,11 @@ class AppColors {
     required this.subTitleText,
     required this.textBlack,
     required this.textGray,
+    required this.hintText,
     required this.iconPrimary,
     required this.iconSecondary,
+    required this.prefixIconColor,
+    required this.borderPrimary,  
     required this.safePrimary,
     required this.safePrimaryLight,
     required this.safeSecondary,
@@ -25,6 +28,7 @@ class AppColors {
     required this.orange,
     required this.lightOrange,
     required this.lightGray,
+    required this.authCircle,
     required this.gradientPrimary,
     required this.gradientSecondary,
   });
@@ -44,10 +48,15 @@ class AppColors {
   final Color subTitleText;
   final Color textBlack;
   final Color textGray;
+  final Color hintText;
 
   // Icon Colors
   final Color iconPrimary;
   final Color iconSecondary;
+  final Color prefixIconColor;      
+
+  // border colors
+  final Color borderPrimary;
 
   // Safe colors
   final Color safePrimary;
@@ -64,6 +73,7 @@ class AppColors {
   final Color orange;
   final Color lightOrange;
   final Color lightGray;
+  final Color authCircle;
 
   // Gradient colors
   final Color gradientPrimary;
@@ -81,8 +91,11 @@ class AppColors {
       subTitleText: AppColorsLight.subTitleText,
       textBlack: AppColorsLight.textBlack,
       textGray: AppColorsLight.textGray,
+      hintText: AppColorsLight.hintText,
       iconPrimary: AppColorsLight.iconPrimary,
-      iconSecondary: AppColorsLight.iconSecondary,
+      iconSecondary: AppColorsLight.iconSecondary,  
+      prefixIconColor: AppColorsLight.prefixIconColor,
+      borderPrimary: AppColorsLight.borderPrimary,
       safePrimary: AppColorsLight.safePrimary,
       safePrimaryLight: AppColorsLight.safePrimaryLight,
       safeSecondary: AppColorsLight.safeSecondary,
@@ -93,6 +106,7 @@ class AppColors {
       orange: AppColorsLight.orange,
       lightOrange: AppColorsLight.lightOrange,
       lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsLight.primary.withValues(alpha: 0.1),
       gradientPrimary: AppColorsLight.gradientPrimary,
       gradientSecondary: AppColorsLight.gradientSecondary,
     );
@@ -110,8 +124,11 @@ class AppColors {
       subTitleText: AppColorsDark.subTitleText,
       textBlack: AppColorsDark.textBlack,
       textGray: AppColorsDark.textGray,
+      hintText: AppColorsDark.hintText,
       iconPrimary: AppColorsDark.iconPrimary,
       iconSecondary: AppColorsDark.iconSecondary,
+      prefixIconColor: AppColorsDark.prefixIconColor,
+      borderPrimary: AppColorsDark.borderPrimary,
       safePrimary: AppColorsDark.safePrimary,
       // Fallback to light theme colors for missing dark theme colors
       safePrimaryLight: AppColorsLight.safePrimaryLight,
@@ -123,6 +140,7 @@ class AppColors {
       orange: AppColorsLight.orange,
       lightOrange: AppColorsLight.lightOrange,
       lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsDark.primaryText.withValues(alpha: 0.1),
       gradientPrimary: AppColorsDark.primaryText,
       gradientSecondary: Color(0x1AFFFFFF),
     );
