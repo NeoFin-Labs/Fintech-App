@@ -17,6 +17,7 @@ class AppColorsLight {
   static const Color subTitleText = Color(0xFF18191F);
   static const Color textBlack = Color(0xFF152C07);
   static const Color textGray = Color(0xFF949494);
+  static const Color textGray2 = Color(0xFF8E949A);
   static const Color hintText = Color(0xFF8C8C8C);
 
   // Icon Colors
@@ -64,7 +65,7 @@ class AppColorsDark {
   static const Color primaryText = white;
   static const Color secondaryText = Color(0xFFA1A1A1);
   static const Color subTitleText = Color(0xFFE0E1E7);
-  static const Color textBlack = Color(0xFF152C07);
+  static const Color textBlack = Color(0xFF0D0D0D);
   static const Color textGray = Color(0xFF949494);
   static const Color hintText = Color(0xFF8C8C8C);
 
