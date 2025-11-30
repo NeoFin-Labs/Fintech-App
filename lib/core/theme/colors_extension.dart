@@ -13,7 +13,10 @@ class AppColors {
     required this.subTitleText,
     required this.textBlack,
     required this.textGray,
+    required this.textGray2,
     required this.hintText,
+    required this.buttonText,
+    required this.elevatedButtonFgColor,
     required this.iconPrimary,
     required this.iconSecondary,
     required this.prefixIconColor,
@@ -48,7 +51,10 @@ class AppColors {
   final Color subTitleText;
   final Color textBlack;
   final Color textGray;
+  final Color textGray2;
   final Color hintText;
+  final Color buttonText;
+  final Color elevatedButtonFgColor;
 
   // Icon Colors
   final Color iconPrimary;
@@ -91,7 +97,10 @@ class AppColors {
       subTitleText: AppColorsLight.subTitleText,
       textBlack: AppColorsLight.textBlack,
       textGray: AppColorsLight.textGray,
+      textGray2: AppColorsLight.textGray2,
       hintText: AppColorsLight.hintText,
+      buttonText: AppColorsLight.primary,
+      elevatedButtonFgColor: AppColorsLight.white,
       iconPrimary: AppColorsLight.iconPrimary,
       iconSecondary: AppColorsLight.iconSecondary,  
       prefixIconColor: AppColorsLight.prefixIconColor,
@@ -124,7 +133,10 @@ class AppColors {
       subTitleText: AppColorsDark.subTitleText,
       textBlack: AppColorsDark.textBlack,
       textGray: AppColorsDark.textGray,
+      textGray2: AppColorsLight.textGray2,
       hintText: AppColorsDark.hintText,
+      buttonText: AppColorsDark.white,
+      elevatedButtonFgColor: AppColorsDark.textBlack,
       iconPrimary: AppColorsDark.iconPrimary,
       iconSecondary: AppColorsDark.iconSecondary,
       prefixIconColor: AppColorsDark.prefixIconColor,
