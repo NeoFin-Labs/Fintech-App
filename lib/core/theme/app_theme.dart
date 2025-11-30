@@ -1,4 +1,5 @@
 import 'package:fintech_app/core/utils/app_colors.dart';
+import 'package:fintech_app/core/utils/app_text_style.dart' show AppTextStyle;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,18 @@ class AppTheme {
       foregroundColor: AppColorsLight.primary,
     ),
     textTheme: GoogleFonts.latoTextTheme(),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColorsLight.primary,
+        foregroundColor: AppColorsLight.white,
+        minimumSize: Size(double.infinity, 50.h),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(31.r),
+        ),
+        elevation: 0,
+        textStyle: AppTextStyle.font18SemiBold,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: AppColorsLight.hintText),
       contentPadding: EdgeInsets.only(
@@ -64,9 +77,20 @@ class AppTheme {
       foregroundColor: AppColorsDark.primaryText,
     ),
     textTheme: GoogleFonts.latoTextTheme(),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColorsDark.white,
+        foregroundColor: AppColorsDark.textBlack,
+        minimumSize: Size(double.infinity, 50.h),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(31.r),
+        ),
+        elevation: 0,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: AppColorsDark.hintText),
-      
+
       contentPadding: EdgeInsets.only(
         top: 16.h,
         right: 24.w,
