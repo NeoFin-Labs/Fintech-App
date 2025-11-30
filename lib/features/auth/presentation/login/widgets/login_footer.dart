@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/core/theme/colors_extension.dart';
 
@@ -15,17 +16,13 @@ class LoginFooter extends StatelessWidget {
       children: [
         Text(
           'Don\'t have an account? ',
-          style: TextStyle(color: colors.secondaryText, fontSize: 15),
+          style: AppTextStyle.font18Medium.copyWith(color: colors.textGray2),
         ),
         GestureDetector(
           onTap: onSignUpTap,
           child: Text(
             'Sign Up',
-            style: TextStyle(
-              color: colors.primary,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
+            style: AppTextStyle.font18Medium.copyWith(color: colors.buttonText),
           ),
         ),
       ],
