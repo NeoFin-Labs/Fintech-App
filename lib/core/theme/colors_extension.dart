@@ -10,10 +10,17 @@ class AppColors {
     required this.background,
     required this.primaryText,
     required this.secondaryText,
+    required this.subTitleText,
     required this.textBlack,
     required this.textGray,
+    required this.textGray2,
+    required this.hintText,
+    required this.buttonText,
+    required this.elevatedButtonFgColor,
     required this.iconPrimary,
     required this.iconSecondary,
+    required this.prefixIconColor,
+    required this.borderPrimary,  
     required this.safePrimary,
     required this.safePrimaryLight,
     required this.safeSecondary,
@@ -24,6 +31,7 @@ class AppColors {
     required this.orange,
     required this.lightOrange,
     required this.lightGray,
+    required this.authCircle,
     required this.gradientPrimary,
     required this.gradientSecondary,
   });
@@ -40,12 +48,21 @@ class AppColors {
   // Text Colors
   final Color primaryText;
   final Color secondaryText;
+  final Color subTitleText;
   final Color textBlack;
   final Color textGray;
+  final Color textGray2;
+  final Color hintText;
+  final Color buttonText;
+  final Color elevatedButtonFgColor;
 
   // Icon Colors
   final Color iconPrimary;
   final Color iconSecondary;
+  final Color prefixIconColor;      
+
+  // border colors
+  final Color borderPrimary;
 
   // Safe colors
   final Color safePrimary;
@@ -62,6 +79,7 @@ class AppColors {
   final Color orange;
   final Color lightOrange;
   final Color lightGray;
+  final Color authCircle;
 
   // Gradient colors
   final Color gradientPrimary;
@@ -76,10 +94,17 @@ class AppColors {
       background: AppColorsLight.background,
       primaryText: AppColorsLight.primaryText,
       secondaryText: AppColorsLight.secondaryText,
+      subTitleText: AppColorsLight.subTitleText,
       textBlack: AppColorsLight.textBlack,
       textGray: AppColorsLight.textGray,
+      textGray2: AppColorsLight.textGray2,
+      hintText: AppColorsLight.hintText,
+      buttonText: AppColorsLight.primary,
+      elevatedButtonFgColor: AppColorsLight.white,
       iconPrimary: AppColorsLight.iconPrimary,
-      iconSecondary: AppColorsLight.iconSecondary,
+      iconSecondary: AppColorsLight.iconSecondary,  
+      prefixIconColor: AppColorsLight.prefixIconColor,
+      borderPrimary: AppColorsLight.borderPrimary,
       safePrimary: AppColorsLight.safePrimary,
       safePrimaryLight: AppColorsLight.safePrimaryLight,
       safeSecondary: AppColorsLight.safeSecondary,
@@ -90,6 +115,7 @@ class AppColors {
       orange: AppColorsLight.orange,
       lightOrange: AppColorsLight.lightOrange,
       lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsLight.primary.withValues(alpha: 0.1),
       gradientPrimary: AppColorsLight.gradientPrimary,
       gradientSecondary: AppColorsLight.gradientSecondary,
     );
@@ -104,10 +130,17 @@ class AppColors {
       background: AppColorsDark.background,
       primaryText: AppColorsDark.primaryText,
       secondaryText: AppColorsDark.secondaryText,
+      subTitleText: AppColorsDark.subTitleText,
       textBlack: AppColorsDark.textBlack,
       textGray: AppColorsDark.textGray,
+      textGray2: AppColorsLight.textGray2,
+      hintText: AppColorsDark.hintText,
+      buttonText: AppColorsDark.white,
+      elevatedButtonFgColor: AppColorsDark.textBlack,
       iconPrimary: AppColorsDark.iconPrimary,
       iconSecondary: AppColorsDark.iconSecondary,
+      prefixIconColor: AppColorsDark.prefixIconColor,
+      borderPrimary: AppColorsDark.borderPrimary,
       safePrimary: AppColorsDark.safePrimary,
       // Fallback to light theme colors for missing dark theme colors
       safePrimaryLight: AppColorsLight.safePrimaryLight,
@@ -119,6 +152,7 @@ class AppColors {
       orange: AppColorsLight.orange,
       lightOrange: AppColorsLight.lightOrange,
       lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsDark.primaryText.withValues(alpha: 0.1),
       gradientPrimary: AppColorsDark.primaryText,
       gradientSecondary: Color(0x1AFFFFFF),
     );

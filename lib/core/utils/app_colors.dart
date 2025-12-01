@@ -14,12 +14,19 @@ class AppColorsLight {
   // Text Colors
   static const Color primaryText = Color(0xFF1E1F4B);
   static const Color secondaryText = Color(0xFF787A8D);
+  static const Color subTitleText = Color(0xFF18191F);
   static const Color textBlack = Color(0xFF152C07);
   static const Color textGray = Color(0xFF949494);
+  static const Color textGray2 = Color(0xFF8E949A);
+  static const Color hintText = Color(0xFF8C8C8C);
 
   // Icon Colors
   static const Color iconPrimary = Color(0xFF979797);
   static const Color iconSecondary = Color(0xFF222222);
+  static const Color prefixIconColor = Color(0xBF000000);
+
+  // border colors
+  static const Color borderPrimary = primary;
 
   // safe colors
   static const Color safePrimary = Color(0xFF00CB6A);
@@ -57,12 +64,18 @@ class AppColorsDark {
   // Text Colors
   static const Color primaryText = white;
   static const Color secondaryText = Color(0xFFA1A1A1);
-  static const Color textBlack = Color(0xFF152C07);
+  static const Color subTitleText = Color(0xFFE0E1E7);
+  static const Color textBlack = Color(0xFF0D0D0D);
   static const Color textGray = Color(0xFF949494);
+  static const Color hintText = Color(0xFF8C8C8C);
 
   // Icon Colors
   static const Color iconPrimary = Color(0xFF979797);
   static const Color iconSecondary = Color(0xFF222222);
+  static const Color prefixIconColor = Color(0xB8FFFFFF);
+
+  // border colors
+  static const Color borderPrimary = white;
 
   // safe colors
   static const Color safePrimary = Color(0xFF00E576);
