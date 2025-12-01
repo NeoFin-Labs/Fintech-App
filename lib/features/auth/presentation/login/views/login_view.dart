@@ -1,4 +1,6 @@
 import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_background.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/login_form.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +49,7 @@ class LoginView extends StatelessWidget {
             // Footer
             LoginFooter(
               onSignUpTap: () {
-                // TODO: Navigate to sign up
+                context.pushReplacementNamed(Routes.register);
               },
             ),
 
