@@ -1,5 +1,7 @@
+import 'package:fintech_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/core/theme/colors_extension.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BiometricLoginSection extends StatelessWidget {
   const BiometricLoginSection({super.key});
@@ -38,14 +40,14 @@ class BiometricLoginSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _BiometricButton(
-              icon: Icons.fingerprint,
+              image: AppAssets.fingerIdIcon,
               onTap: () {
                 // TODO: Implement fingerprint authentication
               },
             ),
             const SizedBox(width: 48),
             _BiometricButton(
-              icon: Icons.face,
+              image: AppAssets.faceIdIcon,
               onTap: () {
                 // TODO: Implement face ID authentication
               },
@@ -58,21 +60,19 @@ class BiometricLoginSection extends StatelessWidget {
 }
 
 class _BiometricButton extends StatelessWidget {
-  final IconData icon;
+  final String image;
   final VoidCallback onTap;
 
-  const _BiometricButton({required this.icon, required this.onTap});
+  const _BiometricButton({required this.image, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).appColors;
-
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(50),
       child: Container(
         padding: const EdgeInsets.all(16),
-        child: Icon(icon, size: 48, color: colors.iconSecondary),
+        child: SvgPicture.asset(image),
       ),
     );
   }
