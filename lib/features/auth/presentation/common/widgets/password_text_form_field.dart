@@ -53,8 +53,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       suffixIcon: IconButton(
         icon: Icon(
           _isObscured
-              ? Icons.visibility_off_outlined
-              : Icons.visibility_outlined,
+              ? Icons.visibility_outlined
+              : Icons.visibility_off_outlined,
         ),
         onPressed: () {
           setState(() {
