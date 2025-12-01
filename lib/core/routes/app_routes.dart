@@ -1,6 +1,7 @@
 import 'package:fintech_app/core/routes/router_transitions.dart';
 import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/login_view.dart';
+import 'package:fintech_app/features/auth/presentation/register/views/register_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -10,7 +11,9 @@ class AppRoutes {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.login:
-        return RouterTransitions.build(const LoginView());
+        return RouterTransitions.buildHorizontal(const LoginView());
+      case Routes.register:
+        return RouterTransitions.buildHorizontal(const RegisterView());
       default:
         return RouterTransitions.build(
           const Scaffold(body: Center(child: Text('Page not found'))),
