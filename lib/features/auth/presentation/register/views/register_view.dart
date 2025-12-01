@@ -2,6 +2,7 @@ import 'package:fintech_app/core/helper/spacing.dart';
 import 'package:fintech_app/core/routes/navigation_extension.dart';
 import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_background.dart';
+import 'package:fintech_app/features/auth/presentation/common/widgets/social_auth_buttons.dart';
 import 'package:fintech_app/features/auth/presentation/register/views/register_form.dart';
 import 'package:fintech_app/features/auth/presentation/register/widgets/register_footer.dart';
 import 'package:fintech_app/features/auth/presentation/register/widgets/register_header.dart';
@@ -27,6 +28,18 @@ class RegisterView extends StatelessWidget {
 
             // Register Form
             const RegisterForm(),
+            VerticalSpace(20),
+
+            // Social auth buttons
+            SocialAuthButtons(
+              onGooglePressed: () {
+                // TODO: Implement Google sign up
+              },
+              onFacebookPressed: () {
+                // TODO: Implement Facebook sign up
+              },
+            ),
+
             VerticalSpace(24),
 
             // Footer
