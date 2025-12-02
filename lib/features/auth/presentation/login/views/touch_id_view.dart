@@ -1,4 +1,6 @@
 import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_text_style.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_background.dart';
 import 'package:fintech_app/features/auth/presentation/login/widgets/fingerprint_scanner.dart';
@@ -14,41 +16,46 @@ class TouchIdView extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).appColors;
 
-    return AuthBackground(
-      child: SizedBox.expand(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-          child: Column(
-            children: [
-              // Top spacing
-              const VerticalSpace(60),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(Routes.touchIdVerification);
+      },
+      child: AuthBackground(
+        child: SizedBox.expand(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+            child: Column(
+              children: [
+                // Top spacing
+                const VerticalSpace(60),
 
-              // Title
-              Text(
-                'Touch ID sensor to verify\nyourself',
-                textAlign: TextAlign.center,
-                style: AppTextStyle.font26Bold.copyWith(
-                  color: colors.primaryText,
+                // Title
+                Text(
+                  'Touch ID sensor to verify\nyourself',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.font26Bold.copyWith(
+                    color: colors.primaryText,
+                  ),
                 ),
-              ),
 
-              const Spacer(),
+                const Spacer(),
 
-              // Fingerprint Icon with animation
-              const FingerprintScanner(),
+                // Fingerprint Icon with animation
+                const FingerprintScanner(),
 
-              const Spacer(),
+                const Spacer(),
 
-              // Instruction text
-              InstructionText(
-                text:
-                    'Please verify your identity using touch\nID and it will proceed automatically.',
-                textColor: colors.subTitleText,
-                withShadow: false,
-              ),
+                // Instruction text
+                InstructionText(
+                  text:
+                      'Please verify your identity using touch\nID and it will proceed automatically.',
+                  textColor: colors.subTitleText,
+                  withShadow: false,
+                ),
 
-              const VerticalSpace(60),
-            ],
+                const VerticalSpace(100),
+              ],
+            ),
           ),
         ),
       ),
