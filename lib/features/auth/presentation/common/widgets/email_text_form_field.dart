@@ -18,7 +18,9 @@ class EmailTextFormField extends StatelessWidget {
           return 'Please enter your email address';
         }
         // Regex for email validation
-        final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+        final emailRegex = RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+        );
         if (!emailRegex.hasMatch(value)) {
           return 'Please enter a valid email address';
         }
