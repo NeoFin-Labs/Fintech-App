@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/core/theme/colors_extension.dart';
@@ -49,7 +51,7 @@ class BiometricLoginSection extends StatelessWidget {
             _BiometricButton(
               image: AppAssets.faceIdIcon,
               onTap: () {
-                // TODO: Implement face ID authentication
+                context.pushNamed(Routes.faceId);
               },
             ),
           ],
