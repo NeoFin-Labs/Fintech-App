@@ -9,6 +9,8 @@ class Routes {
   static const String register = '/register';
   // Face ID
   static const String faceId = '/face-id';
+  // Touch ID
+  static const String touchId = '/touch-id';
   // Forgot Password
   static const String forgotPassword = '/forgot-password';
   // Reset Password
