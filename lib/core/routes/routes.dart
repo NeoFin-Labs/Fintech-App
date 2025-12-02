@@ -7,6 +7,8 @@ class Routes {
   static const String login = '/';
   // Register
   static const String register = '/register';
+  // Face ID
+  static const String faceId = '/face-id';
   // Forgot Password
   static const String forgotPassword = '/forgot-password';
   // Reset Password
