@@ -11,6 +11,10 @@ class Routes {
   static const String faceId = '/face-id';
   // Touch ID
   static const String touchId = '/touch-id';
+  // Face ID Verification
+  static const String faceIdVerification = '/face-id-verification';
+  // Touch ID Verification
+  static const String touchIdVerification = '/touch-id-verification';
   // Forgot Password
   static const String forgotPassword = '/forgot-password';
   // Reset Password

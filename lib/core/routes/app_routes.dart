@@ -1,6 +1,8 @@
 import 'package:fintech_app/core/routes/router_transitions.dart';
 import 'package:fintech_app/core/routes/routes.dart';
+import 'package:fintech_app/features/auth/presentation/login/views/face_id_success_view.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/face_id_view.dart';
+import 'package:fintech_app/features/auth/presentation/login/views/touch_id_success_view.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/touch_id_view.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/login_view.dart';
 import 'package:fintech_app/features/auth/presentation/register/views/register_view.dart';
@@ -20,6 +22,10 @@ class AppRoutes {
         return RouterTransitions.buildVertical(const FaceIdView());
       case Routes.touchId:
         return RouterTransitions.buildVertical(const TouchIdView());
+      case Routes.faceIdVerification:
+        return RouterTransitions.buildVertical(const FaceIdSuccessView());
+      case Routes.touchIdVerification:
+        return RouterTransitions.buildVertical(const TouchIdSuccessView());
       default:
         return RouterTransitions.build(
           const Scaffold(body: Center(child: Text('Page not found'))),
