@@ -7,6 +7,22 @@ class Routes {
   static const String login = '/';
   // Register
   static const String register = '/register';
+  // Face ID
+  static const String faceId = '/face-id';
+  // Touch ID
+  static const String touchId = '/touch-id';
+  // Set Fingerprint
+  static const String setFingerprint = '/set-fingerprint';
+  static const String setFingerprintSuccess = '/set-fingerprint-success';
+  // Set Face ID
+  static const String faceIdSetup = '/face-id-setup';
+  static const String setFaceId = '/set-face-id';
+  static const String setFaceIdSuccess = '/set-face-id-success';
+
+  // Face ID Verification
+  static const String faceIdVerification = '/face-id-verification';
+  // Touch ID Verification
+  static const String touchIdVerification = '/touch-id-verification';
   // Forgot Password
   static const String forgotPassword = '/forgot-password';
   // Reset Password

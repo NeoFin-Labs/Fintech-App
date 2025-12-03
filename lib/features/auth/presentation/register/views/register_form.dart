@@ -1,4 +1,6 @@
 import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_button.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/confirm_password_text_form_field.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/email_text_form_field.dart';
@@ -98,7 +100,7 @@ class _RegisterFormState extends State<RegisterForm> {
           AuthButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                // TODO: Implement register logic
+                context.pushNamed(Routes.setFingerprint);
               }
             },
             buttonText: 'Register',

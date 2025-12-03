@@ -1,6 +1,11 @@
+import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_assets.dart';
+import 'package:fintech_app/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/core/theme/colors_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BiometricLoginSection extends StatelessWidget {
@@ -17,39 +22,41 @@ class BiometricLoginSection extends StatelessWidget {
             Expanded(
               child: Divider(
                 color: colors.secondaryText.withValues(alpha: 0.3),
-                thickness: 1,
+                thickness: 1.w,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Text(
                 'Or login with',
-                style: TextStyle(color: colors.secondaryText, fontSize: 14),
+                style: AppTextStyle.font14Regular.copyWith(
+                  color: colors.secondaryText,
+                ),
               ),
             ),
             Expanded(
               child: Divider(
                 color: colors.secondaryText.withValues(alpha: 0.3),
-                thickness: 1,
+                thickness: 1.w,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 32),
+        const VerticalSpace(32),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _BiometricButton(
               image: AppAssets.fingerIdIcon,
               onTap: () {
-                // TODO: Implement fingerprint authentication
+                context.pushNamed(Routes.touchId);
               },
             ),
-            const SizedBox(width: 48),
+            const HorizontalSpace(48),
             _BiometricButton(
               image: AppAssets.faceIdIcon,
               onTap: () {
-                // TODO: Implement face ID authentication
+                context.pushNamed(Routes.faceId);
               },
             ),
           ],
@@ -69,9 +76,9 @@ class _BiometricButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(50.r),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.w),
         child: SvgPicture.asset(image),
       ),
     );

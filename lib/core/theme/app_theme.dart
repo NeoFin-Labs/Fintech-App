@@ -32,6 +32,19 @@ class AppTheme {
         textStyle: AppTextStyle.font18SemiBold,
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        minimumSize: Size(double.infinity, 50.h),
+        side: BorderSide(color: AppColorsLight.primary, width: 2.w),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(31.r),
+        ),
+        elevation: 0,
+        textStyle: AppTextStyle.font18SemiBold.copyWith(
+          color: AppColorsLight.primary,
+        ),
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: AppColorsLight.hintText),
       contentPadding: EdgeInsets.only(
@@ -86,6 +99,19 @@ class AppTheme {
           borderRadius: BorderRadius.circular(31.r),
         ),
         elevation: 0,
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        minimumSize: Size(double.infinity, 50.h),
+        side: BorderSide(color: AppColorsDark.primary, width: 2.w),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(31.r),
+        ),
+        elevation: 0,
+        textStyle: AppTextStyle.font18SemiBold.copyWith(
+          color: AppColorsDark.white,
+        ),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(

@@ -20,7 +20,7 @@ class AppColors {
     required this.iconPrimary,
     required this.iconSecondary,
     required this.prefixIconColor,
-    required this.borderPrimary,  
+    required this.borderPrimary,
     required this.safePrimary,
     required this.safePrimaryLight,
     required this.safeSecondary,
@@ -59,7 +59,7 @@ class AppColors {
   // Icon Colors
   final Color iconPrimary;
   final Color iconSecondary;
-  final Color prefixIconColor;      
+  final Color prefixIconColor;
 
   // border colors
   final Color borderPrimary;
@@ -102,7 +102,7 @@ class AppColors {
       buttonText: AppColorsLight.primary,
       elevatedButtonFgColor: AppColorsLight.white,
       iconPrimary: AppColorsLight.iconPrimary,
-      iconSecondary: AppColorsLight.iconSecondary,  
+      iconSecondary: AppColorsLight.iconSecondary,
       prefixIconColor: AppColorsLight.prefixIconColor,
       borderPrimary: AppColorsLight.borderPrimary,
       safePrimary: AppColorsLight.safePrimary,
