@@ -1,7 +1,5 @@
 import 'package:fintech_app/core/helper/spacing.dart';
-import 'package:fintech_app/features/auth/presentation/common/widgets/auth_background.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/verification_message.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/verification_success_icon.dart';
+import 'package:fintech_app/features/auth/presentation/common/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

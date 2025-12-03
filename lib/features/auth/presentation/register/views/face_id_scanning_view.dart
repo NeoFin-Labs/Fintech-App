@@ -3,18 +3,17 @@ import 'package:fintech_app/core/routes/navigation_extension.dart';
 import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_assets.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/widgets.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FaceIdView extends StatelessWidget {
-  const FaceIdView({super.key});
+class FaceIdScanningView extends StatelessWidget {
+  const FaceIdScanningView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.faceIdVerification);
+        context.pushNamed(Routes.setFaceIdSuccess);
       },
       child: Scaffold(
         body: Stack(
@@ -27,25 +26,34 @@ class FaceIdView extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // Top spacing
                   const VerticalSpace(100),
-                  const Spacer(),
 
-                  // Face ID Icon with animation
-                  const FaceIdScanner(),
-
-                  const VerticalSpace(60),
-
-                  // Instruction text
+                  // Instruction text at top
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: const InstructionText(),
+                    child: const InstructionText(
+                      text:
+                          'Place your face ID in face\nscanner until the icon completely',
+                    ),
                   ),
 
                   const Spacer(),
 
-                  // Loading indicator
-                  const LoadingIndicator(),
+                  // Face ID Scanner
+                  const FaceIdScanner(),
+
+                  const VerticalSpace(60),
+
+                  // Bottom instruction text
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: const InstructionText(
+                      text:
+                          'Once your scanning is complete, you will\nbe able to sign in by using face ID',
+                    ),
+                  ),
+
+                  const Spacer(),
                 ],
               ),
             ),
