@@ -40,8 +40,6 @@ class BiometricCubit extends Cubit<BiometricState> {
   }
 
   Future<void> authenticateWithBiometric() async {
-    emit(const BiometricLoading());
-
     try {
       final didAuthenticate = await _biometricAuthService.authenticate();
       if (didAuthenticate) {
