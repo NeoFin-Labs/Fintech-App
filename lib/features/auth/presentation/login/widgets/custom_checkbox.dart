@@ -22,9 +22,7 @@ class CustomCheckbox extends StatelessWidget {
       child: Checkbox(
         value: value,
         onChanged: onChanged,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         side: BorderSide(
           color: colors.primaryText.withValues(alpha: 0.3),
           width: 1.5,

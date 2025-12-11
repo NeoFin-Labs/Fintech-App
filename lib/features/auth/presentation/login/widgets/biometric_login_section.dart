@@ -1,6 +1,16 @@
+import 'package:fintech_app/core/di/injection_container.dart';
+import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/logger/app_logger.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_assets.dart';
+import 'package:fintech_app/core/utils/app_text_style.dart';
+import 'package:fintech_app/features/auth/presentation/common/cubit/biometric_availability_cubit.dart';
+import 'package:fintech_app/features/auth/presentation/common/cubit/biometric_availability_state.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/core/theme/colors_extension.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BiometricLoginSection extends StatelessWidget {
@@ -10,6 +20,36 @@ class BiometricLoginSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).appColors;
 
+    return BlocProvider(
+      create: (context) =>
+          getIt<BiometricCubit>()..checkBiometricAvailability(),
+      child: BlocConsumer<BiometricCubit, BiometricState>(
+        listener: (context, state) {
+          if (state is BiometricAvailabilityError) {
+            AppLogger.logError(
+              'Biometric availability error: ${state.message}',
+            );
+          }
+          if (state is BiometricAuthenticationSuccessState) {
+            context.pushReplacementNamed(Routes.home);
+          }
+        },
+        builder: (context, state) {
+          if (state is BiometricAvailabilitySuccess || state is BiometricAuthenticationSuccessState) {
+            return _buildBiometricSection(context, colors);
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
+      ),
+    );
+  }
+
+  /// Build the biometric login section
+  Widget _buildBiometricSection(
+    BuildContext context,
+    AppColors colors,
+  ) {
     return Column(
       children: [
         Row(
@@ -17,40 +57,42 @@ class BiometricLoginSection extends StatelessWidget {
             Expanded(
               child: Divider(
                 color: colors.secondaryText.withValues(alpha: 0.3),
-                thickness: 1,
+                thickness: 1.w,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Text(
                 'Or login with',
-                style: TextStyle(color: colors.secondaryText, fontSize: 14),
+                style: AppTextStyle.font14Regular.copyWith(
+                  color: colors.secondaryText,
+                ),
               ),
             ),
             Expanded(
               child: Divider(
                 color: colors.secondaryText.withValues(alpha: 0.3),
-                thickness: 1,
+                thickness: 1.w,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 32),
+        const VerticalSpace(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _BiometricButton(
-              image: AppAssets.fingerIdIcon,
               onTap: () {
-                // TODO: Implement fingerprint authentication
+                context.read<BiometricCubit>().authenticateWithBiometric();
               },
-            ),
-            const SizedBox(width: 48),
-            _BiometricButton(
-              image: AppAssets.faceIdIcon,
-              onTap: () {
-                // TODO: Implement face ID authentication
-              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(AppAssets.faceIdIcon),
+                  const HorizontalSpace(5),
+                  SvgPicture.asset(AppAssets.fingerIdIcon),
+                ],
+              ),
             ),
           ],
         ),
@@ -60,19 +102,28 @@ class BiometricLoginSection extends StatelessWidget {
 }
 
 class _BiometricButton extends StatelessWidget {
-  final String image;
+  final Widget child;
   final VoidCallback onTap;
 
-  const _BiometricButton({required this.image, required this.onTap});
+  const _BiometricButton({required this.child, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).appColors;
+
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(12.r),
       child: Container(
-        padding: const EdgeInsets.all(16),
-        child: SvgPicture.asset(image),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(
+            color: colors.primaryText.withValues(alpha: 0.2),
+            width: 1.5.w,
+          ),
+        ),
+        child: child,
       ),
     );
   }
