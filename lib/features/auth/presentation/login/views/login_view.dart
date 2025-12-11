@@ -4,11 +4,10 @@ import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_background.dart';
 import 'package:fintech_app/features/auth/presentation/login/views/login_form.dart';
 import 'package:flutter/material.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/login_header.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/social_auth_buttons.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/biometric_login_section.dart';
-import 'package:fintech_app/features/auth/presentation/login/widgets/login_footer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fintech_app/features/auth/presentation/login/widgets/widgets.dart';
+
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
