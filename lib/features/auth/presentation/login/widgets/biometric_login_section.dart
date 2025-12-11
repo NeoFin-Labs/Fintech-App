@@ -22,40 +22,35 @@ class BiometricLoginSection extends StatelessWidget {
 
     return BlocProvider(
       create: (context) =>
-          getIt<BiometricAvailabilityCubit>()..checkBiometricAvailability(),
-      child:
-          BlocBuilder<BiometricAvailabilityCubit, BiometricAvailabilityState>(
-            builder: (context, state) {
-              // Use pattern matching to handle different states
-              return switch (state) {
-                BiometricAvailabilityInitial() => const SizedBox.shrink(),
-                BiometricAvailabilityLoading() => const SizedBox.shrink(),
-                BiometricAvailabilityError() => const SizedBox.shrink(),
-                BiometricAvailabilitySuccess() => _buildBiometricSection(
-                  context,
-                  colors,
-                  state,
-                ),
-              };
-            },
-          ),
+          getIt<BiometricCubit>()..checkBiometricAvailability(),
+      child: BlocConsumer<BiometricCubit, BiometricState>(
+        listener: (context, state) {
+          if (state is BiometricAvailabilityError) {
+            AppLogger.logError(
+              'Biometric availability error: ${state.message}',
+            );
+          }
+          if (state is BiometricAuthenticationSuccessState) {
+            context.pushReplacementNamed(Routes.home);
+          }
+        },
+        builder: (context, state) {
+          if (state is BiometricAvailabilitySuccess) {
+            return _buildBiometricSection(context, colors, state);
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
+      ),
     );
   }
 
+  /// Build the biometric login section
   Widget _buildBiometricSection(
     BuildContext context,
     AppColors colors,
     BiometricAvailabilitySuccess state,
   ) {
-    AppLogger.logInfo('Strong Biometric: ${state.hasStrongBiometric}');
-
-    // Only show the section if STRONG biometric authentication is available
-    // This ensures only hardware-based biometrics (Face ID, Touch ID, etc.) are shown
-    if (!state.hasStrongBiometric) {
-      AppLogger.logInfo('No strong biometric available - hiding section');
-      return const SizedBox.shrink();
-    }
-
     return Column(
       children: [
         Row(
@@ -87,25 +82,19 @@ class BiometricLoginSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Show fingerprint button only if available
-            if (state.isStrongBiometricAvailable) ...[
-              _BiometricButton(
-                image: AppAssets.fingerIdIcon,
-                onTap: () {
-                  context.pushNamed(Routes.touchId);
-                },
+            _BiometricButton(
+              onTap: () {
+                context.read<BiometricCubit>().authenticateWithBiometric();
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(AppAssets.faceIdIcon),
+                  const HorizontalSpace(5),
+                  SvgPicture.asset(AppAssets.fingerIdIcon),
+                ],
               ),
-              if (state.isFaceIdAvailable) const HorizontalSpace(48),
-            ],
-            if (state.isStrongBiometricAvailable) const HorizontalSpace(48),
-            // Show Face ID button only if available
-            if (state.isStrongBiometricAvailable)
-              _BiometricButton(
-                image: AppAssets.faceIdIcon,
-                onTap: () {
-                  context.pushNamed(Routes.faceId);
-                },
-              ),
+            ),
           ],
         ),
       ],
@@ -114,19 +103,28 @@ class BiometricLoginSection extends StatelessWidget {
 }
 
 class _BiometricButton extends StatelessWidget {
-  final String image;
+  final Widget child;
   final VoidCallback onTap;
 
-  const _BiometricButton({required this.image, required this.onTap});
+  const _BiometricButton({required this.child, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).appColors;
+
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(50.r),
+      borderRadius: BorderRadius.circular(12.r),
       child: Container(
-        padding: EdgeInsets.all(16.w),
-        child: SvgPicture.asset(image),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(
+            color: colors.primaryText.withValues(alpha: 0.2),
+            width: 1.5.w,
+          ),
+        ),
+        child: child,
       ),
     );
   }

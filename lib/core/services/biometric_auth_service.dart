@@ -88,11 +88,29 @@ class BiometricAuthService {
     try {
       final bool didAuthenticate = await _localAuth.authenticate(
         localizedReason: localizedReason,
+        biometricOnly: true,
+        // Setting this to false allows "weak" biometrics (like 2D Face Unlock) to be used.
+        // If set to true, some devices will only offer Fingerprint if Face is considered weak.
+        sensitiveTransaction: false,
       );
       return didAuthenticate;
     } on PlatformException {
       return false;
     }
+  }
+
+  /// Authenticate specifically with Face ID
+  Future<bool> authenticateWithFaceId() async {
+    return authenticate(
+      localizedReason: 'Please authenticate with Face ID to continue',
+    );
+  }
+
+  /// Authenticate specifically with Fingerprint
+  Future<bool> authenticateWithFingerprint() async {
+    return authenticate(
+      localizedReason: 'Please authenticate with Fingerprint to continue',
+    );
   }
 
   /// Stop authentication

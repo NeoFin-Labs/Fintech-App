@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1015164648222",
+    "project_id": "fintech-43e32",
+    "storage_bucket": "fintech-43e32.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015164648222:android:e8d9393e9d88caf4bf270f",
+        "android_client_info": {
+          "package_name": "com.example.coin_velo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015164648222-279geqmpaqj56n9irg0791gnk0g5p5ut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYe6nqZvRrl5gvD16E_CaSOHtyDOEqOTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015164648222-279geqmpaqj56n9irg0791gnk0g5p5ut.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1015164648222-2voicdhf6915rotob8t0nikk2cgvtdre.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.coinVelo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

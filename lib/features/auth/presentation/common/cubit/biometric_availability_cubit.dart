@@ -2,14 +2,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fintech_app/core/services/biometric_auth_service.dart';
 import 'package:fintech_app/features/auth/presentation/common/cubit/biometric_availability_state.dart';
 
-class BiometricAvailabilityCubit extends Cubit<BiometricAvailabilityState> {
+class BiometricCubit extends Cubit<BiometricState> {
   final BiometricAuthService _biometricAuthService;
 
-  BiometricAvailabilityCubit(this._biometricAuthService)
-    : super(const BiometricAvailabilityInitial());
+  BiometricCubit(this._biometricAuthService)
+    : super(const BiometricInitial());
 
   Future<void> checkBiometricAvailability() async {
-    emit(const BiometricAvailabilityLoading());
+    emit(const BiometricLoading());
 
     try {
       final isDeviceSupported = await _biometricAuthService.isDeviceSupported();
@@ -34,6 +34,25 @@ class BiometricAvailabilityCubit extends Cubit<BiometricAvailabilityState> {
       emit(
         BiometricAvailabilityError(
           message: 'Failed to check biometric availability: $e',
+        ),
+      );
+    }
+  }
+
+  Future<void> authenticateWithBiometric() async {
+    emit(const BiometricLoading());
+
+    try {
+      final didAuthenticate = await _biometricAuthService.authenticate();
+      if (didAuthenticate) {
+        emit(const BiometricAuthenticationSuccessState());
+      } else {
+        emit(const BiometricAuthenticationErrorState());
+      }
+    } catch (e) {
+      emit(
+        BiometricAuthenticationErrorState(
+          message: 'Failed to authenticate with biometric: $e',
         ),
       );
     }

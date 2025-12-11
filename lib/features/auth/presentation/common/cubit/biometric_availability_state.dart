@@ -1,20 +1,20 @@
 /// Base sealed class for biometric availability states
-sealed class BiometricAvailabilityState {
-  const BiometricAvailabilityState();
+sealed class BiometricState {
+  const BiometricState();
 }
 
 /// Initial state - checking biometric availability
-class BiometricAvailabilityInitial extends BiometricAvailabilityState {
-  const BiometricAvailabilityInitial();
+class BiometricInitial extends BiometricState {
+  const BiometricInitial();
 }
 
 /// Loading state - currently checking biometric availability
-class BiometricAvailabilityLoading extends BiometricAvailabilityState {
-  const BiometricAvailabilityLoading();
+class BiometricLoading extends BiometricState {
+  const BiometricLoading();
 }
 
 /// Success state - biometric availability check completed
-class BiometricAvailabilitySuccess extends BiometricAvailabilityState {
+class BiometricAvailabilitySuccess extends BiometricState {
   final bool isDeviceSupported;
   final bool canCheckBiometrics;
   final bool isFaceIdAvailable;
@@ -38,8 +38,18 @@ class BiometricAvailabilitySuccess extends BiometricAvailabilityState {
 }
 
 /// Error state - biometric availability check failed
-class BiometricAvailabilityError extends BiometricAvailabilityState {
+class BiometricAvailabilityError extends BiometricState {
   final String? message;
 
   const BiometricAvailabilityError({this.message});
+}
+
+class BiometricAuthenticationSuccessState extends BiometricState {
+  const BiometricAuthenticationSuccessState();
+}
+
+class BiometricAuthenticationErrorState extends BiometricState {
+  final String? message;
+
+  const BiometricAuthenticationErrorState({this.message});
 }

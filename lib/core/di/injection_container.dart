@@ -8,5 +8,5 @@ Future<void> init() async {
   // Core
   getIt.registerLazySingleton(() => DioFactory().dio);
   getIt.registerLazySingleton(() => BiometricAuthService());
-  getIt.registerFactory(() => BiometricAvailabilityCubit(getIt()));
+  getIt.registerFactory(() => BiometricCubit(getIt()));
 }
