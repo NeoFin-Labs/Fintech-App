@@ -1,6 +1,7 @@
 import 'package:fintech_app/core/helper/spacing.dart';
 import 'package:fintech_app/core/routes/navigation_extension.dart';
 import 'package:fintech_app/core/routes/routes.dart';
+import 'package:fintech_app/core/utils/snackbar_extension.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_button.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/confirm_password_text_form_field.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/email_text_form_field.dart';
@@ -8,6 +9,8 @@ import 'package:fintech_app/features/auth/presentation/common/widgets/name_text_
 import 'package:fintech_app/features/auth/presentation/common/widgets/password_text_form_field.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/phone_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fintech_app/features/auth/presentation/common/cubit/auth_cubit.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -97,14 +100,31 @@ class _RegisterFormState extends State<RegisterForm> {
           VerticalSpace(24),
 
           // Register button
-          AuthButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.pushNamed(Routes.setFingerprint);
+          BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is AuthSuccess) {
+                context.pushNamed(Routes.home);
+              } else if (state is AuthFailure) {
+                context.showErrorSnackBar(state.message);
               }
             },
-            buttonText: 'Register',
-            isLoading: false,
+            builder: (context, state) {
+              return AuthButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AuthCubit>().register(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      firstName: _firstNameController.text,
+                      lastName: _lastNameController.text,
+                      phone: _phoneController.text,
+                    );
+                  }
+                },
+                buttonText: 'Register',
+                isLoading: state is AuthLoading,
+              );
+            },
           ),
         ],
       ),

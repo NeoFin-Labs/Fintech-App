@@ -1,9 +1,14 @@
 import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
+import 'package:fintech_app/core/utils/snackbar_extension.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/auth_button.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/email_text_form_field.dart';
 import 'package:fintech_app/features/auth/presentation/common/widgets/password_text_form_field.dart';
 import 'package:fintech_app/features/auth/presentation/login/widgets/remember_me_and_forget_password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fintech_app/features/auth/presentation/common/cubit/auth_cubit.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -59,14 +64,28 @@ class _LoginFormState extends State<LoginForm> {
           VerticalSpace(24),
 
           // Login button
-          AuthButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // TODO: Implement login logic
+          BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is AuthSuccess) {
+                context.pushReplacementNamed(Routes.home);
+              } else if (state is AuthFailure) {
+                context.showErrorSnackBar(state.message);
               }
             },
-            buttonText: 'Login',
-            isLoading: false,
+            builder: (context, state) {
+              return AuthButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AuthCubit>().login(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  }
+                },
+                buttonText: 'Login',
+                isLoading: state is AuthLoading,
+              );
+            },
           ),
         ],
       ),

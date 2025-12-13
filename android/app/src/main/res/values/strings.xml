@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CoinVelo</string>
+    
+    <string name="facebook_app_id">1527572144952236</string>
+    <string name="fb_login_protocol_scheme">fb1527572144952236</string>
+    <string name="facebook_client_token">de496e6e8f2c53f9f4ccde7839040890</string>
+</resources>

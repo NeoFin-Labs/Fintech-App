@@ -1,4 +1,6 @@
 import 'package:fintech_app/core/helper/spacing.dart';
+import 'package:fintech_app/core/routes/navigation_extension.dart';
+import 'package:fintech_app/core/routes/routes.dart';
 import 'package:fintech_app/core/utils/app_text_style.dart';
 import 'package:fintech_app/features/auth/presentation/login/widgets/custom_checkbox.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,7 @@ class RememberMeAndForgetPassword extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            // TODO: Navigate to forgot password
+            context.pushNamed(Routes.forgotPassword);
           },
           child: Text(
             'Forget Password?',

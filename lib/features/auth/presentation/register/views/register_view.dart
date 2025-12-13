@@ -8,50 +8,60 @@ import 'package:fintech_app/features/auth/presentation/register/widgets/register
 import 'package:fintech_app/features/auth/presentation/register/widgets/register_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fintech_app/core/di/injection_container.dart' as di;
+import 'package:fintech_app/features/auth/presentation/common/cubit/auth_cubit.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AuthBackground(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            VerticalSpace(40),
+    return BlocProvider(
+      create: (context) => di.getIt<AuthCubit>(),
+      child: Builder(
+        builder: (context) {
+          return AuthBackground(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  VerticalSpace(40),
 
-            // Header
-            const RegisterHeader(),
-            VerticalSpace(32),
+                  // Header
+                  const RegisterHeader(),
+                  VerticalSpace(32),
 
-            // Register Form
-            const RegisterForm(),
-            VerticalSpace(20),
+                  // Register Form
+                  const RegisterForm(),
+                  VerticalSpace(20),
 
-            // Social auth buttons
-            SocialAuthButtons(
-              onGooglePressed: () {
-                // TODO: Implement Google sign up
-              },
-              onFacebookPressed: () {
-                // TODO: Implement Facebook sign up
-              },
+                  // Social auth buttons
+                  SocialAuthButtons(
+                    onGooglePressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
+                    onFacebookPressed: () {
+                      context.read<AuthCubit>().signInWithFacebook();
+                    },
+                  ),
+
+                  VerticalSpace(24),
+
+                  // Footer
+                  RegisterFooter(
+                    onLoginTap: () {
+                      context.pushReplacementNamed(Routes.login);
+                    },
+                  ),
+
+                  VerticalSpace(24),
+                ],
+              ),
             ),
-
-            VerticalSpace(24),
-
-            // Footer
-            RegisterFooter(
-              onLoginTap: () {
-                context.pushReplacementNamed(Routes.login);
-              },
-            ),
-
-            VerticalSpace(24),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
