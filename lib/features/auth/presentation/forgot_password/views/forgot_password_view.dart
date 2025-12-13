@@ -2,6 +2,7 @@ import 'package:fintech_app/core/di/injection_container.dart' as di;
 import 'package:fintech_app/core/helper/spacing.dart';
 import 'package:fintech_app/core/routes/navigation_extension.dart';
 import 'package:fintech_app/core/success/success.dart';
+import 'package:fintech_app/core/theme/colors_extension.dart';
 import 'package:fintech_app/core/utils/app_text_style.dart';
 import 'package:fintech_app/core/utils/snackbar_extension.dart';
 import 'package:fintech_app/features/auth/presentation/common/cubit/auth_cubit.dart';
@@ -84,13 +85,17 @@ class _ForgotPasswordContentState extends State<_ForgotPasswordContent> {
                   // Header
                   Text(
                     'Forgot Password?',
-                    style: AppTextStyle.font32Bold,
+                    style: AppTextStyle.font32Bold.copyWith(
+                      color: Theme.of(context).appColors.primaryText,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   VerticalSpace(16),
                   Text(
                     'Enter your email address and we\'ll send you a link to reset your password.',
-                    style: AppTextStyle.font14Regular,
+                    style: AppTextStyle.font14Regular.copyWith(
+                      color: Theme.of(context).appColors.secondaryText,
+                    ),
                     textAlign: TextAlign.center,
                   ),
 

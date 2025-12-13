@@ -47,6 +47,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: AppColorsLight.hintText),
+      labelStyle: TextStyle(color: AppColorsLight.primaryText),
       contentPadding: EdgeInsets.only(
         top: 16.h,
         right: 24.w,
@@ -116,6 +117,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: AppColorsDark.hintText),
+      labelStyle: TextStyle(color: AppColorsDark.white),
 
       contentPadding: EdgeInsets.only(
         top: 16.h,
@@ -129,11 +131,11 @@ class AppTheme {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
-        borderSide: BorderSide(color: AppColorsDark.borderPrimary, width: 1.w),
+        borderSide: BorderSide(color: AppColorsDark.white, width: 1.w),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
-        borderSide: BorderSide(color: AppColorsDark.primary, width: 1.w),
+        borderSide: BorderSide(color: AppColorsDark.white, width: 1.w),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
