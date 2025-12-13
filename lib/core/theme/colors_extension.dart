@@ -1,0 +1,167 @@
+import 'package:flutter/material.dart';
+import 'package:fintech_app/core/utils/app_colors.dart';
+
+class AppColors {
+  const AppColors._({
+    required this.primary,
+    required this.secondary,
+    required this.white,
+    required this.black,
+    required this.background,
+    required this.primaryText,
+    required this.secondaryText,
+    required this.subTitleText,
+    required this.textBlack,
+    required this.textGray,
+    required this.textGray2,
+    required this.hintText,
+    required this.buttonText,
+    required this.elevatedButtonFgColor,
+    required this.iconPrimary,
+    required this.iconSecondary,
+    required this.prefixIconColor,
+    required this.borderPrimary,
+    required this.safePrimary,
+    required this.safePrimaryLight,
+    required this.safeSecondary,
+    required this.lightGreen,
+    required this.dangerPrimary,
+    required this.dangerSecondary,
+    required this.blue,
+    required this.orange,
+    required this.lightOrange,
+    required this.lightGray,
+    required this.authCircle,
+    required this.gradientPrimary,
+    required this.gradientSecondary,
+  });
+
+  // Primary Colors
+  final Color primary;
+  final Color secondary;
+  final Color white;
+  final Color black;
+
+  // Background Colors
+  final Color background;
+
+  // Text Colors
+  final Color primaryText;
+  final Color secondaryText;
+  final Color subTitleText;
+  final Color textBlack;
+  final Color textGray;
+  final Color textGray2;
+  final Color hintText;
+  final Color buttonText;
+  final Color elevatedButtonFgColor;
+
+  // Icon Colors
+  final Color iconPrimary;
+  final Color iconSecondary;
+  final Color prefixIconColor;
+
+  // border colors
+  final Color borderPrimary;
+
+  // Safe colors
+  final Color safePrimary;
+  final Color safePrimaryLight;
+  final Color safeSecondary;
+  final Color lightGreen;
+
+  // Danger Colors
+  final Color dangerPrimary;
+  final Color dangerSecondary;
+
+  // Extra colors
+  final Color blue;
+  final Color orange;
+  final Color lightOrange;
+  final Color lightGray;
+  final Color authCircle;
+
+  // Gradient colors
+  final Color gradientPrimary;
+  final Color gradientSecondary;
+
+  factory AppColors._light() {
+    return AppColors._(
+      primary: AppColorsLight.primary,
+      secondary: AppColorsLight.secondary,
+      white: AppColorsLight.white,
+      black: AppColorsLight.black,
+      background: AppColorsLight.background,
+      primaryText: AppColorsLight.primaryText,
+      secondaryText: AppColorsLight.secondaryText,
+      subTitleText: AppColorsLight.subTitleText,
+      textBlack: AppColorsLight.textBlack,
+      textGray: AppColorsLight.textGray,
+      textGray2: AppColorsLight.textGray2,
+      hintText: AppColorsLight.hintText,
+      buttonText: AppColorsLight.primary,
+      elevatedButtonFgColor: AppColorsLight.white,
+      iconPrimary: AppColorsLight.iconPrimary,
+      iconSecondary: AppColorsLight.iconSecondary,
+      prefixIconColor: AppColorsLight.prefixIconColor,
+      borderPrimary: AppColorsLight.borderPrimary,
+      safePrimary: AppColorsLight.safePrimary,
+      safePrimaryLight: AppColorsLight.safePrimaryLight,
+      safeSecondary: AppColorsLight.safeSecondary,
+      lightGreen: AppColorsLight.lightGreen,
+      dangerPrimary: AppColorsLight.dangerPrimary,
+      dangerSecondary: AppColorsLight.dangerSecondary,
+      blue: AppColorsLight.blue,
+      orange: AppColorsLight.orange,
+      lightOrange: AppColorsLight.lightOrange,
+      lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsLight.primary.withValues(alpha: 0.1),
+      gradientPrimary: AppColorsLight.gradientPrimary,
+      gradientSecondary: AppColorsLight.gradientSecondary,
+    );
+  }
+
+  factory AppColors._dark() {
+    return AppColors._(
+      primary: AppColorsDark.primary,
+      secondary: AppColorsDark.primary,
+      white: AppColorsDark.white,
+      black: AppColorsDark.black,
+      background: AppColorsDark.background,
+      primaryText: AppColorsDark.primaryText,
+      secondaryText: AppColorsDark.secondaryText,
+      subTitleText: AppColorsDark.subTitleText,
+      textBlack: AppColorsDark.textBlack,
+      textGray: AppColorsDark.textGray,
+      textGray2: AppColorsLight.textGray2,
+      hintText: AppColorsDark.hintText,
+      buttonText: AppColorsDark.white,
+      elevatedButtonFgColor: AppColorsDark.textBlack,
+      iconPrimary: AppColorsDark.iconPrimary,
+      iconSecondary: AppColorsDark.iconSecondary,
+      prefixIconColor: AppColorsDark.prefixIconColor,
+      borderPrimary: AppColorsDark.borderPrimary,
+      safePrimary: AppColorsDark.safePrimary,
+      // Fallback to light theme colors for missing dark theme colors
+      safePrimaryLight: AppColorsLight.safePrimaryLight,
+      safeSecondary: AppColorsLight.safeSecondary,
+      lightGreen: AppColorsLight.lightGreen,
+      dangerPrimary: AppColorsLight.dangerPrimary,
+      dangerSecondary: AppColorsLight.dangerSecondary,
+      blue: AppColorsLight.blue,
+      orange: AppColorsLight.orange,
+      lightOrange: AppColorsLight.lightOrange,
+      lightGray: AppColorsLight.lightGray,
+      authCircle: AppColorsDark.primaryText.withValues(alpha: 0.1),
+      gradientPrimary: AppColorsDark.primaryText,
+      gradientSecondary: Color(0x1AFFFFFF),
+    );
+  }
+}
+
+extension ColorExtension on ThemeData {
+  AppColors get appColors {
+    if (brightness == Brightness.dark) return AppColors._dark();
+    return AppColors._light();
+  }
+}
