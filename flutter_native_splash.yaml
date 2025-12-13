@@ -1,0 +1,27 @@
+flutter_native_splash:
+  # ==============================
+  # Common Configuration
+  # ==============================
+  color: "#9775FA"
+  image: assets/splash/lightSplash.png
+
+  # Dark Mode Support (Critical for the fix)
+  color_dark: "#0D0D0D"
+  image_dark: assets/splash/darkSplash.png
+
+  # ==============================
+  # Android 12+ Configuration
+  # ==============================
+  android_12:
+    color: "#FFFFFF"
+    image: assets/splash/lightSplash.png
+    color_dark: "#0D0D0D"
+    image_dark: assets/splash/darkSplash.png
+
+  # ==============================
+  # Layout & Platform Settings
+  # ==============================
+  android_gravity: center
+  ios_content_mode: center
+  web_image_mode: center
+  fullscreen: true

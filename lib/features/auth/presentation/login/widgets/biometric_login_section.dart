@@ -35,7 +35,7 @@ class BiometricLoginSection extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is BiometricAvailabilitySuccess || state is BiometricAuthenticationSuccessState) {
+          if (state is BiometricAvailabilitySuccess || state is BiometricAuthenticationSuccessState || state is BiometricAuthenticationErrorState ) {
             return _buildBiometricSection(context, colors);
           } else {
             return const SizedBox.shrink();
