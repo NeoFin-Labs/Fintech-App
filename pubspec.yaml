@@ -38,13 +38,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
-  flutter_facebook_auth: ^6.0.4
+  flutter_facebook_auth: ^7.1.2
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^10.0.0
   flutter_svg: ^2.2.3
   get_it: ^9.2.0
   google_fonts: ^6.3.3
-  google_sign_in: ^6.2.1
+  google_sign_in: ^7.2.0
   iconsax_flutter: ^1.0.1
   local_auth: ^3.0.0
   pretty_dio_logger: ^1.4.0
