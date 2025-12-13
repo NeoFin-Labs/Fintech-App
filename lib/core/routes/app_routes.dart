@@ -5,6 +5,7 @@ import 'package:fintech_app/features/auth/presentation/login/views/login_view.da
 import 'package:fintech_app/features/auth/presentation/register/views/fingerprint_complete_view.dart';
 import 'package:fintech_app/features/auth/presentation/register/views/fingerprint_setup_view.dart';
 import 'package:fintech_app/features/auth/presentation/register/views/register_view.dart';
+import 'package:fintech_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -13,6 +14,8 @@ class AppRoutes {
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.welcome:
+        return RouterTransitions.buildHorizontal(const OnboardingView());
       case Routes.login:
         return RouterTransitions.buildHorizontal(const LoginView());
       case Routes.register:

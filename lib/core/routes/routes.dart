@@ -2,9 +2,9 @@ class Routes {
   const Routes._();
 
   // Welcome
-  static const String welcome = '/welcome';
+  static const String welcome = '/';
   // Login
-  static const String login = '/';
+  static const String login = '/login';
   // Register
   static const String register = '/register';
   // Face ID
