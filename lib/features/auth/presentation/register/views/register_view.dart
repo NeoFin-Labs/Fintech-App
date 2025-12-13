@@ -19,45 +19,49 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => di.getIt<AuthCubit>(),
-      child: AuthBackground(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              VerticalSpace(40),
+      child: Builder(
+        builder: (context) {
+          return AuthBackground(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  VerticalSpace(40),
 
-              // Header
-              const RegisterHeader(),
-              VerticalSpace(32),
+                  // Header
+                  const RegisterHeader(),
+                  VerticalSpace(32),
 
-              // Register Form
-              const RegisterForm(),
-              VerticalSpace(20),
+                  // Register Form
+                  const RegisterForm(),
+                  VerticalSpace(20),
 
-              // Social auth buttons
-              SocialAuthButtons(
-                onGooglePressed: () {
-                  // TODO: Implement Google sign up
-                },
-                onFacebookPressed: () {
-                  // TODO: Implement Facebook sign up
-                },
+                  // Social auth buttons
+                  SocialAuthButtons(
+                    onGooglePressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
+                    onFacebookPressed: () {
+                      context.read<AuthCubit>().signInWithFacebook();
+                    },
+                  ),
+
+                  VerticalSpace(24),
+
+                  // Footer
+                  RegisterFooter(
+                    onLoginTap: () {
+                      context.pushReplacementNamed(Routes.login);
+                    },
+                  ),
+
+                  VerticalSpace(24),
+                ],
               ),
-
-              VerticalSpace(24),
-
-              // Footer
-              RegisterFooter(
-                onLoginTap: () {
-                  context.pushReplacementNamed(Routes.login);
-                },
-              ),
-
-              VerticalSpace(24),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

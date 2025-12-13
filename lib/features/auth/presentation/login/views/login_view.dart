@@ -18,48 +18,52 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => di.getIt<AuthCubit>(),
-      child: AuthBackground(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              VerticalSpace(40),
-              // Header
-              const LoginHeader(),
-              VerticalSpace(32),
-              // Login Form
-              const LoginForm(),
-              VerticalSpace(20),
+      child: Builder(
+        builder: (context) {
+          return AuthBackground(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  VerticalSpace(40),
+                  // Header
+                  const LoginHeader(),
+                  VerticalSpace(32),
+                  // Login Form
+                  const LoginForm(),
+                  VerticalSpace(20),
 
-              // Social login buttons
-              SocialAuthButtons(
-                onGooglePressed: () {
-                  // TODO: Implement Google login
-                },
-                onFacebookPressed: () {
-                  // TODO: Implement Facebook login
-                },
+                  // Social login buttons
+                  SocialAuthButtons(
+                    onGooglePressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
+                    onFacebookPressed: () {
+                      context.read<AuthCubit>().signInWithFacebook();
+                    },
+                  ),
+
+                  VerticalSpace(20),
+
+                  // Biometric login section
+                  const BiometricLoginSection(),
+
+                  VerticalSpace(24),
+
+                  // Footer
+                  LoginFooter(
+                    onSignUpTap: () {
+                      context.pushReplacementNamed(Routes.register);
+                    },
+                  ),
+
+                  VerticalSpace(24),
+                ],
               ),
-
-              VerticalSpace(20),
-
-              // Biometric login section
-              const BiometricLoginSection(),
-
-              VerticalSpace(24),
-
-              // Footer
-              LoginFooter(
-                onSignUpTap: () {
-                  context.pushReplacementNamed(Routes.register);
-                },
-              ),
-
-              VerticalSpace(24),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

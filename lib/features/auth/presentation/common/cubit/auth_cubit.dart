@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/logger/app_logger.dart';
 import 'package:fintech_app/core/success/success.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/repositories/auth_repository_impl.dart';
@@ -33,6 +34,33 @@ class AuthCubit extends Cubit<AuthState> {
       lastName,
       phone,
     );
+    result.fold(
+      (failure) => emit(AuthFailure(failure.message)),
+      (success) => emit(AuthSuccess(success)),
+    );
+  }
+
+  Future<void> signInWithGoogle() async {
+    AppLogger.logInfo('Cubit before AuthLoading signInWithGoogle');
+    emit(AuthLoading());
+    AppLogger.logInfo('Cubit after AuthLoading signInWithGoogle');
+    final result = await _authRepository.signInWithGoogle();
+    AppLogger.logInfo('Cubit after signInWithGoogle');
+    result.fold(
+      (failure) {
+        AppLogger.logInfo('Cubit after AuthFailure signInWithGoogle');
+        emit(AuthFailure(failure.message));
+      },
+      (success) {
+        AppLogger.logInfo('Cubit after AuthSuccess signInWithGoogle');
+        emit(AuthSuccess(success));
+      },
+    );
+  }
+
+  Future<void> signInWithFacebook() async {
+    emit(AuthLoading());
+    final result = await _authRepository.signInWithFacebook();
     result.fold(
       (failure) => emit(AuthFailure(failure.message)),
       (success) => emit(AuthSuccess(success)),
