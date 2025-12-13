@@ -18,6 +18,7 @@ abstract class AuthRemoteDataSource {
   );
   Future<UserCredential> signInWithGoogle();
   Future<UserCredential> signInWithFacebook();
+  Future<void> resetPassword(String email);
   Future<void> logout();
   User? getCurrentUser();
 }
@@ -150,6 +151,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       });
     }
     AppLogger.logInfo('User document: $userDoc');
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   @override

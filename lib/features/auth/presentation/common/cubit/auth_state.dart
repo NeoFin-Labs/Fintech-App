@@ -7,7 +7,7 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {
-  final AuthenticationSuccess success;
+  final Success success;
   AuthSuccess(this.success);
 }
 

@@ -67,12 +67,21 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  Future<void> resetPassword(String email) async {
+    emit(AuthLoading());
+    final result = await _authRepository.resetPassword(email);
+    result.fold(
+      (failure) => emit(AuthFailure(failure.message)),
+      (success) => emit(AuthSuccess(success)),
+    );
+  }
+
   Future<void> logout() async {
     emit(AuthLoading());
     final result = await _authRepository.logout();
     result.fold(
       (failure) => emit(AuthFailure(failure.message)),
-      (success) => emit(AuthSuccess(success as AuthenticationSuccess)),
+      (success) => emit(AuthSuccess(success)),
     );
   }
 }

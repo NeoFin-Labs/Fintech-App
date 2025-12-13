@@ -19,6 +19,7 @@ abstract class AuthRepository {
   );
   Future<Either<Failure, AuthenticationSuccess>> signInWithGoogle();
   Future<Either<Failure, AuthenticationSuccess>> signInWithFacebook();
+  Future<Either<Failure, Success>> resetPassword(String email);
   Future<Either<Failure, Success>> logout();
   User? getCurrentUser();
 }
@@ -91,8 +92,6 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-
-
   @override
   Future<Either<Failure, AuthenticationSuccess>> signInWithFacebook() async {
     try {
@@ -105,6 +104,28 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+  @override
+  Future<Either<Failure, Success>> resetPassword(String email) async {
+    try {
+      await _remoteDataSource.resetPassword(email);
+      return const Right(PasswordResetSuccess());
+    } on FirebaseAuthException catch (e) {
+      String errorMessage;
+      switch (e.code) {
+        case 'user-not-found':
+          errorMessage = 'No user found with this email address';
+          break;
+        case 'invalid-email':
+          errorMessage = 'Invalid email address';
+          break;
+        default:
+          errorMessage = e.message ?? 'Failed to send password reset email';
+      }
+      return Left(ServerFailure(errorMessage));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 
   @override
   Future<Either<Failure, Success>> logout() async {
