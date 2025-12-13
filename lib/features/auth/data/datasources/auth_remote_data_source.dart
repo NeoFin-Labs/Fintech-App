@@ -36,7 +36,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     FacebookAuth? facebookAuth,
   }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
        _firestore = firestore ?? FirebaseFirestore.instance,
-       _googleSignIn = googleSignIn ?? GoogleSignIn(),
+       _googleSignIn = googleSignIn ?? GoogleSignIn.instance,
        _facebookAuth = facebookAuth ?? FacebookAuth.instance;
 
   @override
@@ -77,20 +77,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserCredential> signInWithGoogle() async {
     AppLogger.logInfo('Remote before signInWithGoogle');
-    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
     AppLogger.logInfo('Remote after signInWithGoogle $googleUser');
-    if (googleUser == null) {
-      throw FirebaseAuthException(
-        code: 'ERROR_ABORTED_BY_USER',
-        message: 'Sign in aborted by user',
-      );
-    }
-    AppLogger.logInfo('Remote after Google user2: $googleUser');
-
     final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+         googleUser.authentication;
     final OAuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
     AppLogger.logInfo('Remote after Google user3: $googleUser');
@@ -113,7 +104,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     if (result.status == LoginStatus.success) {
       final AccessToken accessToken = result.accessToken!;
       final OAuthCredential credential = FacebookAuthProvider.credential(
-        accessToken.token,
+        accessToken.tokenString
       );
 
       final userCredential = await _firebaseAuth.signInWithCredential(

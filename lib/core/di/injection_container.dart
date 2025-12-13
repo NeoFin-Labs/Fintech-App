@@ -7,7 +7,9 @@ import 'package:fintech_app/features/auth/data/datasources/auth_remote_data_sour
 import 'package:fintech_app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:fintech_app/features/auth/presentation/common/cubit/auth_cubit.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 final GetIt getIt = GetIt.instance;
+
 Future<void> init() async {
   // Core
   getIt.registerLazySingleton(() => DioFactory().dio);
@@ -15,10 +17,19 @@ Future<void> init() async {
   getIt.registerFactory(() => BiometricCubit(getIt()));
   getIt.registerFactory(() => AuthCubit(getIt()));
 
+  // Initialize GoogleSignIn with serverClientId
+  final googleSignIn = GoogleSignIn.instance;
+  await googleSignIn.initialize(
+    // Web OAuth client ID from google-services.json
+    // Required for serverClientId on Android
+    serverClientId:
+        '1015164648222-279geqmpaqj56n9irg0791gnk0g5p5ut.apps.googleusercontent.com',
+  );
+
   // Auth Feature
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(
-      googleSignIn: GoogleSignIn(),
+      googleSignIn: googleSignIn,
       facebookAuth: FacebookAuth.instance,
     ),
   );
